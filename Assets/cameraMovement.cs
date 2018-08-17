@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class cameraMovement : MonoBehaviour
 {
@@ -16,5 +17,9 @@ public class cameraMovement : MonoBehaviour
 	void Update ()
 	{
 		transform.position += new Vector3(0, Time.deltaTime * moveSpeed, 0);
+		if (Input.GetButtonDown("Fire3"))
+		{
+			SceneManager.LoadScene(0);
+		}
 	}
 }

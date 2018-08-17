@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b541b883eac0184ba3b0c0e6a89b4e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireForce: 150
+  fireForce: 400
   piece: {fileID: 1752755528163314, guid: d32436a7ed0eee44a863ce146580efcc, type: 2}
   ropeNumber: 10
   shooter: {fileID: 0}

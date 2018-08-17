@@ -81,8 +81,12 @@ public class GrappleGun : MonoBehaviour
 
     void PullInRope()
     {
+        if (currentHook == null)
+        {
+            return;
+        }
         joint.distance = (currentHook.transform.position - transform.position).magnitude;
-        rb.AddForce((currentHook.transform.position- transform.position).normalized * pullForce, ForceMode2D.Impulse);
+        rb.AddForce((currentHook.transform.position- transform.position).normalized * pullForce, ForceMode2D.Force);
     }
 
     IEnumerator InvokeMethod(Action method, float interval, int invokeCount)

@@ -61,7 +61,12 @@ public class GrappleHook : MonoBehaviour
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0;
         rb.bodyType = RigidbodyType2D.Kinematic;
+
         transform.SetParent(other.transform);
+        if (other.CompareTag("Rock"))
+        {
+            other.attachedRigidbody.WakeUp();
+        }
         shooter.AttachHinge(gameObject);
     }
 }
