@@ -59,7 +59,9 @@ public class GrappleHook : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         rb.velocity = Vector2.zero;
-        rb.bodyType = RigidbodyType2D.Static;
+        rb.angularVelocity = 0;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        transform.SetParent(other.transform);
         shooter.AttachHinge(gameObject);
     }
 }

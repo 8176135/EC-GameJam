@@ -21,6 +21,11 @@ public class GrappleGun : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    [SerializeField] float pullForce = 31;
+
+    [SerializeField]
+    float maxCooldown = 1;
+
     float cooldown = 0;
     bool lastFireDown = false;
 
@@ -46,7 +51,7 @@ public class GrappleGun : MonoBehaviour
                 }
                 else if (cooldown <= 0)
                 {
-                    cooldown = 2;
+                    cooldown = maxCooldown;
                     var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     mousePos.z = 0;
                     var rot = Quaternion.LookRotation(Vector3.forward, mousePos -transform.position);
@@ -60,8 +65,8 @@ public class GrappleGun : MonoBehaviour
                         currentCoroutine = null;
                     }
 
-                    currentHook = Instantiate(grappleHook, transform.position + ( mousePos - transform.position).normalized * 3.5f, rot);
-                    currentHook.transform.SetParent(transform);
+                    currentHook = Instantiate(grappleHook, transform.position + ( mousePos - transform.position).normalized * 4.5f, rot);
+                    //currentHook.transform.SetParent(transform);
                 }
             }
         }
@@ -77,7 +82,7 @@ public class GrappleGun : MonoBehaviour
     void PullInRope()
     {
         joint.distance = (currentHook.transform.position - transform.position).magnitude;
-        rb.AddForce((currentHook.transform.position- transform.position).normalized * 2, ForceMode2D.Impulse);
+        rb.AddForce((currentHook.transform.position- transform.position).normalized * pullForce, ForceMode2D.Impulse);
     }
 
     IEnumerator InvokeMethod(Action method, float interval, int invokeCount)

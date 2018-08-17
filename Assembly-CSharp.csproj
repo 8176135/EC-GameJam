@@ -58,6 +58,7 @@
     <Compile Include="Assets\GrappleGun.cs" />
     <Compile Include="Assets\GrappleHook.cs" />
     <Compile Include="Assets\movement.cs" />
+    <Compile Include="Assets\RockSpawner.cs" />
     <None Include="Assets\Scenes\NewUnlitShader.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>F:/Documents/Unity Projects/ECGameJam/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
