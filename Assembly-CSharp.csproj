@@ -55,6 +55,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\cameraMovement.cs" />
+    <Compile Include="Assets\deathbeam.cs" />
     <Compile Include="Assets\GrappleGun.cs" />
     <Compile Include="Assets\GrappleHook.cs" />
     <Compile Include="Assets\movement.cs" />
