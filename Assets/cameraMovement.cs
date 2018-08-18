@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -65,7 +66,8 @@ public class cameraMovement : MonoBehaviour
 //		wallOfDeath.transform.localPosition = new Vector3(0,-Camera.main.orthographicSize + 3, 10);
 //		rockSpawner.transform.localPosition = new Vector3(0,Camera.main.orthographicSize + 10, 10);
 
-		rockSpawner = GetComponentInChildren<RockSpawner>();
+		spawner = GetComponentInChildren<RockSpawner>();
+
 	}
 	
 	// Update is called once per frame
@@ -92,7 +94,7 @@ public class cameraMovement : MonoBehaviour
 
 		moveSpeed += moveSpeedIncrease * Time.deltaTime;
 		transform.position += new Vector3(0, Time.deltaTime * moveSpeed, 0);
-
+		spawner.rockSpawnCooldown = Mathf.Lerp(1.4f, 0.1f, Mathf.Log10(moveSpeed - 6 + 1) * 0.5f);
 		if (player != null && player.transform.position.y - 18 > transform.position.y)
 		{
 			transform.position = new Vector3(transform.position.x, player.transform.position.y - 18, transform.position.z);

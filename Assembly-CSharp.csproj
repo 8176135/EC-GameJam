@@ -66,6 +66,7 @@
     <Compile Include="Assets\movement.cs" />
     <Compile Include="Assets\RockSpawner.cs" />
     <Compile Include="Assets\scoreManager.cs" />
+    <Compile Include="Assets\SelfDestruct.cs" />
     <Compile Include="Assets\wall.cs" />
     <None Include="Assets\Scenes\NewUnlitShader.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">

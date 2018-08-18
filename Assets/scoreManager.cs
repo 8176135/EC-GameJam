@@ -7,15 +7,17 @@ public class scoreManager : MonoBehaviour
 {
 
 	[SerializeField] Text scoreText;
+
+	float offset;
 	// Use this for initialization
 	void Start ()
 	{
-		scoreText.text = "0";
+		offset = transform.position.y;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		scoreText.text = transform.position.y.ToString("0.0");
+		scoreText.text = (transform.position.y - offset).ToString("0.0");
 	}
 }

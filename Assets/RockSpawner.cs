@@ -14,8 +14,8 @@ public class RockSpawner : MonoBehaviour
     {
     }
 
-    [SerializeField] float rockSpawnCooldown = 1;
-    [SerializeField] float rockSpawnRandom = 0.3f;
+    [SerializeField] public float rockSpawnCooldown = 1;
+    [SerializeField] public float rockSpawnRandom = 0.3f;
 
     float actualSpawn = 0;
 
