@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using EZCameraShake;
 using UnityEngine;
 
 public class GrappleHook : MonoBehaviour
@@ -15,6 +16,7 @@ public class GrappleHook : MonoBehaviour
     GameObject[] ropePieces;
 
     public GrappleGun shooter;
+    public bool grappled = false;
 
     // Use this for initialization
     void Start()
@@ -58,6 +60,21 @@ public class GrappleHook : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (grappled)
+        {
+            return;
+
+        }
+
+        if (other.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        CameraShaker.Instance.ShakeOnce(8, 10, 0.05f, 0.05f);
+
+        grappled = true;
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0;
         rb.bodyType = RigidbodyType2D.Kinematic;
