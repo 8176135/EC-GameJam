@@ -55,8 +55,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Bullet.cs" />
     <Compile Include="Assets\cameraMovement.cs" />
     <Compile Include="Assets\deathbeam.cs" />
+    <Compile Include="Assets\dreamlo\dreamloLeaderBoard.cs" />
+    <Compile Include="Assets\dreamlo\dreamloPromoCode.cs" />
+    <Compile Include="Assets\dreamlo\LeaderBoardSample.cs" />
     <Compile Include="Assets\EZ Camera Shake\Scripts\CameraShakeInstance.cs" />
     <Compile Include="Assets\EZ Camera Shake\Scripts\CameraShakePresets.cs" />
     <Compile Include="Assets\EZ Camera Shake\Scripts\CameraShaker.cs" />
@@ -64,10 +68,14 @@
     <Compile Include="Assets\GrappleGun.cs" />
     <Compile Include="Assets\GrappleHook.cs" />
     <Compile Include="Assets\movement.cs" />
+    <Compile Include="Assets\PowerupSpawner.cs" />
     <Compile Include="Assets\RockSpawner.cs" />
     <Compile Include="Assets\scoreManager.cs" />
     <Compile Include="Assets\SelfDestruct.cs" />
+    <Compile Include="Assets\ShieldActive.cs" />
+    <Compile Include="Assets\Shotgun.cs" />
     <Compile Include="Assets\wall.cs" />
+    <None Include="Assets\dreamlo\README_FIRST.txt" />
     <None Include="Assets\Scenes\NewUnlitShader.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>F:/Documents/Unity Projects/ECGameJam/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

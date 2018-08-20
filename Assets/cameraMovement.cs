@@ -9,18 +9,21 @@ public class cameraMovement : MonoBehaviour
 
 	[SerializeField] float moveSpeed = 1;
 	[SerializeField] float moveSpeedIncrease = 0.1f;
-	public static bool move = false;
+	public static bool move;
 
 	[SerializeField] GameObject player;
 
 	[SerializeField] GameObject wallOfDeath;
 	[SerializeField] GameObject rockSpawner;
 
+	[SerializeField] GameObject startScrn;
+
 
 	RockSpawner spawner;
 	// Use this for initialization
-	void Start () {
-
+	void Start ()
+	{
+		move = false;
 		// set the desired aspect ratio (the values in this example are
 		// hard-coded for 16:9, but you could make them into public
 		// variables instead so you can set them at design time)
@@ -69,7 +72,13 @@ public class cameraMovement : MonoBehaviour
 		spawner = GetComponentInChildren<RockSpawner>();
 
 	}
-	
+
+	public void RestartGame()
+	{
+		move = false;
+		SceneManager.LoadScene(0);
+	}
+
 	// Update is called once per frame
 	void Update ()
 	{
@@ -83,7 +92,11 @@ public class cameraMovement : MonoBehaviour
 
 		if (Input.GetButtonDown("FireGrapple"))
 		{
-			move = true;
+			if (!scoreManager.gameEnd)
+			{
+				move = true;
+				startScrn.SetActive(false);
+			}
 		}
 
 		if (!move)
@@ -94,7 +107,7 @@ public class cameraMovement : MonoBehaviour
 
 		moveSpeed += moveSpeedIncrease * Time.deltaTime;
 		transform.position += new Vector3(0, Time.deltaTime * moveSpeed, 0);
-		spawner.rockSpawnCooldown = Mathf.Lerp(1.4f, 0.1f, Mathf.Log10(moveSpeed - 6 + 1) * 0.5f);
+		spawner.rockSpawnCooldown = Mathf.Lerp(1.5f, 0.1f, Mathf.Log10(moveSpeed - 6 + 1) * 0.45f);
 		if (player != null && player.transform.position.y - 18 > transform.position.y)
 		{
 			transform.position = new Vector3(transform.position.x, player.transform.position.y - 18, transform.position.z);

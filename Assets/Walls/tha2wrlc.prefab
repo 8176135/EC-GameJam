@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4133945370448462}
   - component: {fileID: 212260572030224414}
   - component: {fileID: 60057067293331414}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: tha2wrlc
   m_TagString: Wall
   m_Icon: {fileID: 0}

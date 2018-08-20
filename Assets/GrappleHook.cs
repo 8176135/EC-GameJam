@@ -6,8 +6,8 @@ using UnityEngine;
 public class GrappleHook : MonoBehaviour
 {
     Rigidbody2D rb;
-    SpriteRenderer sr;
-    BoxCollider2D col;
+//    SpriteRenderer sr;
+//    BoxCollider2D col;
 
     [SerializeField] float fireForce = 50;
     [SerializeField] GameObject piece;
@@ -18,12 +18,15 @@ public class GrappleHook : MonoBehaviour
     public GrappleGun shooter;
     public bool grappled = false;
 
+    LineRenderer lr;
+
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>();
-        col = GetComponent<BoxCollider2D>();
+        lr = GetComponent<LineRenderer>();
+//        sr = GetComponent<SpriteRenderer>();
+//        col = GetComponent<BoxCollider2D>();
 
         ropePieces = new GameObject[ropeNumber];
         {
@@ -56,6 +59,11 @@ public class GrappleHook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (shooter)
+        {
+            lr.SetPosition(0, transform.position);
+            lr.SetPosition(1, shooter.transform.position);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -69,6 +77,11 @@ public class GrappleHook : MonoBehaviour
         if (other.CompareTag("Wall"))
         {
             Destroy(gameObject);
+            return;
+        }
+
+        if (other.CompareTag("Bullet"))
+        {
             return;
         }
 

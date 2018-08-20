@@ -14,6 +14,8 @@ public class GrappleGun : MonoBehaviour
     DistanceJoint2D joint;
     Rigidbody2D rb;
 
+    [SerializeField] AudioSource hookShoot;
+
     // Use this for initialization
     void Start()
     {
@@ -64,7 +66,8 @@ public class GrappleGun : MonoBehaviour
                         currentCoroutine = null;
                     }
 
-                    currentHook = Instantiate(grappleHook, transform.position + (mousePos - transform.position).normalized * 4.5f, rot);
+                    currentHook = Instantiate(grappleHook, transform.position + (mousePos - transform.position).normalized * 4.8f, rot);
+                    hookShoot.Play();
                     //currentHook.transform.SetParent(transform);
                 }
             }
@@ -77,7 +80,7 @@ public class GrappleGun : MonoBehaviour
             }
         }
 
-        if (currentHook != null && currentHook.GetComponent<GrappleHook>().grappled)
+        if (currentHook != null && currentHook.GetComponent<GrappleHook>().grappled && currentHook.transform.parent)
         {
             rb.AddForce((currentHook.transform.position - transform.position).normalized * pullForce * Time.deltaTime, ForceMode2D.Force);
             currentHook.transform.parent.GetComponent<Rigidbody2D>().AddForce((transform.position - currentHook.transform.parent.transform.position).normalized * pullForce * Time.deltaTime, ForceMode2D.Force);

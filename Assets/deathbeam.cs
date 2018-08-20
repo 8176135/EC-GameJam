@@ -9,6 +9,8 @@ public class deathbeam : MonoBehaviour
     [SerializeField] GameObject parRight;
 
     [SerializeField] GameObject explosionEfx;
+    [SerializeField] GameObject explosionEfxGreen;
+    [SerializeField] GameObject explosionEfxOrange;
 
     SpriteRenderer sr;
 
@@ -36,11 +38,24 @@ public class deathbeam : MonoBehaviour
             Instantiate(explosionEfx, other.transform.position, Quaternion.identity);
             Destroy(other.gameObject);
         }
+        else if (other.CompareTag("Shield"))
+        {
+            Instantiate(explosionEfxGreen, other.transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
+        } else if (other.CompareTag("Shell"))
+        {
+            Instantiate(explosionEfxOrange, other.transform.position, Quaternion.identity);
+            Destroy(other.gameObject);
+        }
         else if (other.CompareTag("Player"))
         {
             Instantiate(explosionEfx, other.transform.position, Quaternion.identity);
             Destroy(other.gameObject);
             cameraMovement.move = false;
+            scoreManager.EndGame();
+        } else if (other.CompareTag("Bullet"))
+        {
+            Destroy(other.gameObject);
         }
     }
 }
